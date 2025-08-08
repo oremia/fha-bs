@@ -6,10 +6,10 @@
       </el-header>
       <el-main v-loading="store.loading">
         <el-tabs v-model="activeTab" type="border-card" class="main-tabs">
-          <el-tab-pane label="FHA 总表" name="table">
+          <el-tab-pane label="FHA 总表" name="table" style="height: 100%;">
             <FhaTable />
           </el-tab-pane>
-          <el-tab-pane label="风险摘要" name="dashboard" :lazy="true">
+          <el-tab-pane label="风险摘要" name="dashboard" :lazy="true" style="height: 100%;">
              <RiskDashboard v-if="activeTab === 'dashboard'" />
           </el-tab-pane>
         </el-tabs>
@@ -56,7 +56,7 @@ onMounted(async () => {
 }
 :deep(.el-tabs__content) {
   flex-grow: 1;
-  overflow-y: auto;
-  padding: 15px;
+  padding: 0;
+  overflow: hidden;
 }
 </style>
