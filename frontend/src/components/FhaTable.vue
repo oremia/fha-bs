@@ -26,6 +26,7 @@
         border
         stripe
         style="width: 100%"
+        height="100%"
         @selection-change="handleSelectionChange"
         ref="tableRef"
         table-layout="fixed"
@@ -185,7 +186,7 @@ const runWizard = (results) => {
 
 const handleCellChange = (row) => {
     const { originalIndex, ...dataToUpdate } = row;
-    store.handleApiCall(api.updateEntry, originalIndex, dataToUpdate);
+    store.updateCellData(originalIndex, dataToUpdate);
 };
 </script>
 
@@ -194,6 +195,8 @@ const handleCellChange = (row) => {
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding: 15px;
+  box-sizing: border-box;
 }
 .toolbar {
   padding: 8px;
@@ -208,6 +211,7 @@ const handleCellChange = (row) => {
   flex-grow: 1;
   /* 关键：让这个容器负责所有滚动 */
   overflow: auto;
+  will-change: transform;
 }
 
 :deep(.el-table .el-input__wrapper) {
